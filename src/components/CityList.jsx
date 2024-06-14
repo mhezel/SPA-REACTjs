@@ -1,26 +1,24 @@
-import Spinner from "./Spinner";
+
 import styles from "./CityList.module.css";
+import Spinner from "./Spinner";
 import CityItem from "./CityItem";
 import Message from "./Message";
-import { useCities } from "../contexts/CitiesContext";
 
-function CityList() {
-  const { cities, isLoading } = useCities();
 
-  if (isLoading) return <Spinner />;
+function CityList({cities, isLoading}){
 
-  if (!cities.length)
-    return (
-      <Message message="Add your first city by clicking on a city on the map" />
+    console.log(cities);
+    
+    if(isLoading) return <Spinner/>;
+    if (!cities.length > 0) return <Message message={'Add your first city by clicking on the Map feature'}/>
+    return(
+        <ul className={styles.CityList}>
+            {cities.map((city) => (
+            <CityItem city={city} key={city.id}/>
+            ))}
+        </ul>
     );
-
-  return (
-    <ul className={styles.cityList}>
-      {cities.map((city) => (
-        <CityItem city={city} key={city.id} />
-      ))}
-    </ul>
-  );
 }
-
 export default CityList;
+
+
