@@ -21,7 +21,8 @@ function City() {
     function () {
       getCity(id);
     },
-    [id]
+    [id, getCity] 
+    //getCity as a dependency can cause re-renders => useCallback inside context provider should be done
   );
 
   const { cityName, emoji, date, notes } = currentCity;

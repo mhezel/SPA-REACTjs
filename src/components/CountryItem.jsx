@@ -1,6 +1,5 @@
 import styles from "./CountryItem.module.css";
 import React from 'react';
-import { Emoji } from 'react-emoji-render';
 
 function CountryItem({ country }) {
 
